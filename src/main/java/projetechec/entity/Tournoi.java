@@ -42,14 +42,14 @@ public class Tournoi {
 	@Column(name = "cadence", length = 50)
 	@Enumerated(EnumType.STRING)
 	private Cadence cadence;
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "arbitre_tournoi", foreignKey = @ForeignKey(name = "tournoi_arbitre_fk"))
 	private Arbitre arbitre;
 	@ManyToOne
 	@JoinColumn(name = "organisateur", foreignKey = @ForeignKey(name = "tournoi_club_fk"))
 	private Club organisateur;
 	@OneToMany(mappedBy = "partie")
-	private List<Partie> partie;
+	private List<Partie> parties;
 	@OneToMany(mappedBy = "id.participant")
 	private List<Participation> participations;
 
@@ -147,12 +147,12 @@ public class Tournoi {
 		this.organisateur = organisateur;
 	}
 
-	public List<Partie> getPartie() {
-		return partie;
+	public List<Partie> getParties() {
+		return parties;
 	}
 
-	public void setPartie(List<Partie> partie) {
-		this.partie = partie;
+	public void setParties(List<Partie> parties) {
+		this.parties = parties;
 	}
 
 	public List<Participation> getParticipations() {
