@@ -14,7 +14,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
@@ -55,8 +54,8 @@ public class Membre {
 	private List<ContenuPedagogique> contenuPedagogique;
 	@OneToMany
 	private List<HistoriqueElo> historiqueElo;
-	@OneToOne
-	private HistoriqueEloKey historiqueEloKey;
+	@OneToMany(mappedBy = "id.membre")
+	private List<HistoriqueEloKey> historiquesEloKey;
 	@OneToMany
 	private List<Tournoi> tournoi;
 
@@ -209,12 +208,13 @@ public class Membre {
 		return tournoi;
 	}
 
-	public HistoriqueEloKey getHistoriqueEloKey() {
-		return historiqueEloKey;
+
+	public List<HistoriqueEloKey> getHistoriquesEloKey() {
+		return historiquesEloKey;
 	}
 
-	public void setHistoriqueEloKey(HistoriqueEloKey historiqueEloKey) {
-		this.historiqueEloKey = historiqueEloKey;
+	public void setHistoriquesEloKey(List<HistoriqueEloKey> historiquesEloKey) {
+		this.historiquesEloKey = historiquesEloKey;
 	}
 
 }

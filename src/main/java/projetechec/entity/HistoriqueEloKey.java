@@ -1,37 +1,50 @@
 package projetechec.entity;
 
-public class HistoriqueEloKey {
+import java.io.Serializable;
+import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.ForeignKey;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+
+@Embeddable
+public class HistoriqueEloKey implements Serializable {
+	private static final long serialVersionUID = 1L;
+	@ManyToOne
+	@JoinColumn(name="membre")
+	private Membre membre;
+	@Column(name = "date")
+	private Date date;
 	
-	// attributs
-	private HistoriqueElo historiqueElo;
-
-	
-	// constructors
-	public HistoriqueEloKey(HistoriqueElo historiqueElo) {
-		this.setHistoriqueElo(historiqueElo);
-	}
-
 	public HistoriqueEloKey() {
+		
 	}
 
-
-	// getters and setters
-	
-	public HistoriqueElo getHistoriqueElo() {
-		return historiqueElo;
+	public Membre getMembre() {
+		return membre;
 	}
 
-	public void setHistoriqueElo(HistoriqueElo historiqueElo) {
-		this.historiqueElo = historiqueElo;
+	public void setMembre(Membre membre) {
+		this.membre = membre;
 	}
 
-	
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((historiqueElo == null) ? 0 : historiqueElo.hashCode());
+		result = prime * result + ((date == null) ? 0 : date.hashCode());
+		result = prime * result + ((membre == null) ? 0 : membre.hashCode());
 		return result;
 	}
 
@@ -44,10 +57,15 @@ public class HistoriqueEloKey {
 		if (getClass() != obj.getClass())
 			return false;
 		HistoriqueEloKey other = (HistoriqueEloKey) obj;
-		if (historiqueElo == null) {
-			if (other.historiqueElo != null)
+		if (date == null) {
+			if (other.date != null)
 				return false;
-		} else if (!historiqueElo.equals(other.historiqueElo))
+		} else if (!date.equals(other.date))
+			return false;
+		if (membre == null) {
+			if (other.membre != null)
+				return false;
+		} else if (!membre.equals(other.membre))
 			return false;
 		return true;
 	}

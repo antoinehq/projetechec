@@ -1,23 +1,22 @@
 package projetechec.entity;
 
-public class HistoriqueElo {
-	
-	
-	// attributs
-	private HistoriqueEloKey id;
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-	
-	// constructors
-	public HistoriqueElo(HistoriqueEloKey id) {
-		this.setId(id);
-	}
+@Entity
+@Table(name = "historique_elo")
+public class HistoriqueElo {
+	@EmbeddedId
+	private HistoriqueEloKey id;
+	@Column(name = "elo", length = 5)
+	private Integer elo;
 	
 	public HistoriqueElo() {
+		super();
 	}
-	
 
-	// getters and setters
-	
 	public HistoriqueEloKey getId() {
 		return id;
 	}
@@ -26,7 +25,14 @@ public class HistoriqueElo {
 		this.id = id;
 	}
 
-	
+	public Integer getElo() {
+		return elo;
+	}
+
+	public void setElo(Integer elo) {
+		this.elo = elo;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -51,5 +57,4 @@ public class HistoriqueElo {
 			return false;
 		return true;
 	}
-	
 }
