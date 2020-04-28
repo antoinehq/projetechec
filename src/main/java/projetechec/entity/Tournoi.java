@@ -43,7 +43,7 @@ public class Tournoi {
 	@Enumerated(EnumType.STRING)
 	private Cadence cadence;
 	@OneToOne
-	@JoinColumn(name = "arbitre_tournoi")
+	@JoinColumn(name = "arbitre_tournoi", foreignKey = @ForeignKey(name="tournoi_arbitre_fk"))
 	private Arbitre arbitre;
 	@ManyToOne
 	@JoinColumn(name = "organisateur", foreignKey = @ForeignKey(name = "tournoi_club_fk"))

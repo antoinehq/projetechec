@@ -26,8 +26,7 @@ public class Arbitre {
 	@Column(name = "niveau", length = 5)
 	@Enumerated(EnumType.STRING)
 	private Niveau niveau;
-	@OneToOne
-	@Column(name = "tournoi_arbitre")
+	@OneToOne(mappedBy = "arbitre")
 	private Tournoi tournoi;
 
 	public Arbitre() {
