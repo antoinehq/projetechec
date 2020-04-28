@@ -48,7 +48,7 @@ public class Tournoi {
 	@ManyToOne
 	@JoinColumn(name = "organisateur", foreignKey = @ForeignKey(name = "tournoi_club_fk"))
 	private Club organisateur;
-	@OneToMany(mappedBy = "partie")
+	@OneToMany(mappedBy = "partieTournoi")
 	private List<Partie> parties;
 	@OneToMany(mappedBy = "id.participant")
 	private List<Participation> participations;

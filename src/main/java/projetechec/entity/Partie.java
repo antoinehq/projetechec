@@ -7,10 +7,13 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 //import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 //import javax.persistence.JoinColumn;
 //import javax.persistence.ManyToOne;
 //import javax.persistence.OneToMany;
@@ -19,8 +22,6 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-
 
 @Entity
 @Table(name = "partie")
@@ -31,91 +32,84 @@ public class Partie {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqPartie")
 	@Column(name = "id_partie")
 	private Integer id;
-//	@ManyToOne
-//	@JoinColumn(name = "", foreignKey = @ForeignKey(name = ""))
-//	private Membre membre;
-	@Column(name = "membre_blanc_partie", length = 50, nullable = false)
-	private String membre_blanc;
-	@Column(name = "membre_noir_partie", length = 50, nullable = false)
-	private String membre_noir;
-	@Column(name = "result_blanc_partie", length = 5, nullable = false)
-	private Double result_blanc;
-	@Column(name = "result_noir_partie", length = 5, nullable = false)
-	private Double result_noir;
+	@ManyToOne
+	@JoinColumn(name = "joueur_blancs", foreignKey = @ForeignKey(name = "partie_joueur_blancs_fk"))
+	private Membre joueurBlancs;
+	@ManyToOne
+	@JoinColumn(name = "joueur_noirs", foreignKey = @ForeignKey(name = "partie_joueur_noirs_fk"))
+	private Membre joueurNoirs;
+	@Column(name = "result_blancs_partie", length = 5, nullable = false)
+	private Double resultBlancs;
+	@Column(name = "result_noirs_partie", length = 5, nullable = false)
+	private Double resultNoirs;
 	@Column(name = "date_partie")
 	@Temporal(TemporalType.DATE)
 	private Date datePartie;
-//	@OneToMany(mappedBy = "partie")
-//	private Set<Membre> membres = new HashSet<>();
-
+	@ManyToOne
+	@JoinColumn(name = "partie_tournoi", foreignKey = @ForeignKey(name = "partie_partie_tournoi_fk"))
+	private Tournoi partieTournoi;
 
 	public Partie() {
 
 	}
 
-	
 	// getters & setters
-	
-	
+
 	public Integer getId() {
 		return id;
 	}
-
 
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-
-	public String getMembre_blanc() {
-		return membre_blanc;
+	public Membre getJoueurBlancs() {
+		return joueurBlancs;
 	}
 
-
-	public void setMembre_blanc(String membre_blanc) {
-		this.membre_blanc = membre_blanc;
+	public void setJoueurBlancs(Membre joueurBlancs) {
+		this.joueurBlancs = joueurBlancs;
 	}
 
-
-	public String getMembre_noir() {
-		return membre_noir;
+	public Membre getJoueurNoirs() {
+		return joueurNoirs;
 	}
 
-
-	public void setMembre_noir(String membre_noir) {
-		this.membre_noir = membre_noir;
+	public void setJoueurNoirs(Membre joueurNoirs) {
+		this.joueurNoirs = joueurNoirs;
 	}
 
-
-	public Double getResult_blanc() {
-		return result_blanc;
+	public Double getResultBlancs() {
+		return resultBlancs;
 	}
 
-
-	public void setResult_blanc(Double result_blanc) {
-		this.result_blanc = result_blanc;
+	public void setResultBlancs(Double resultBlancs) {
+		this.resultBlancs = resultBlancs;
 	}
 
-
-	public Double getResult_noir() {
-		return result_noir;
+	public Double getResultNoirs() {
+		return resultNoirs;
 	}
 
-
-	public void setResult_noir(Double result_noir) {
-		this.result_noir = result_noir;
+	public void setResultNoirs(Double resultNoirs) {
+		this.resultNoirs = resultNoirs;
 	}
-
 
 	public Date getDatePartie() {
 		return datePartie;
 	}
 
-
 	public void setDatePartie(Date datePartie) {
 		this.datePartie = datePartie;
 	}
 
+	public Tournoi getPartieTournoi() {
+		return partieTournoi;
+	}
+
+	public void setPartieTournoi(Tournoi partieTournoi) {
+		this.partieTournoi = partieTournoi;
+	}
 
 	@Override
 	public int hashCode() {
@@ -124,7 +118,6 @@ public class Partie {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -142,7 +135,5 @@ public class Partie {
 			return false;
 		return true;
 	}
-	
-	
-	
+
 }

@@ -28,7 +28,7 @@ public class Membre {
 	private Integer id;
 	@Column(name = "prenom", length = 40, nullable = false)
 	private String prenom;
-	@Column(name = "prenom", length = 40, nullable = false)
+	@Column(name = "nom", length = 40, nullable = false)
 	private String nom;
 	@Column(name = "email", length = 40, nullable = false)
 	private String email;
@@ -44,8 +44,10 @@ public class Membre {
 	private Nationalite nationalite;
 	@Embedded
 	private Adresse adresse;
-	@OneToMany
-	private List<Partie> partie;
+	@OneToMany(mappedBy = "joueurBlancs")
+	private List<Partie> partieBlancs;
+	@OneToMany(mappedBy = "joueurNoirs")
+	private List<Partie> partieNoirs;
 	@ManyToOne
 	@JoinColumn(name = "club", foreignKey = @ForeignKey(name = "membre_club_fk"))
 	private Club club;
@@ -147,8 +149,20 @@ public class Membre {
 		this.club = club;
 	}
 
-	public void setPartie(List<Partie> partie) {
-		this.partie = partie;
+	public List<Partie> getPartieBlancs() {
+		return partieBlancs;
+	}
+
+	public void setPartieBlancs(List<Partie> partieBlancs) {
+		this.partieBlancs = partieBlancs;
+	}
+
+	public List<Partie> getPartieNoirs() {
+		return partieNoirs;
+	}
+
+	public void setPartieNoirs(List<Partie> partieNoirs) {
+		this.partieNoirs = partieNoirs;
 	}
 
 	public void setContenuPedagogique(List<ContenuPedagogique> contenuPedagogique) {
@@ -157,10 +171,6 @@ public class Membre {
 
 	public void setHistoriqueElo(List<HistoriqueElo> historiqueElo) {
 		this.historiqueElo = historiqueElo;
-	}
-
-	public List<Partie> getPartie() {
-		return partie;
 	}
 
 	public List<ContenuPedagogique> getContenuPedagogique() {
