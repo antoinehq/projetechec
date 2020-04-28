@@ -59,6 +59,30 @@ public class Club {
 		this.nom = nom;
 	}
 
+	public Adresse getAdresse() {
+		return adresse;
+	}
+
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
+	}
+
+	public List<Membre> getMembres() {
+		return membres;
+	}
+
+	public void setMembres(List<Membre> membres) {
+		this.membres = membres;
+	}
+
+	public List<Tournoi> getTournois() {
+		return tournois;
+	}
+
+	public void setTournois(List<Tournoi> tournois) {
+		this.tournois = tournois;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
