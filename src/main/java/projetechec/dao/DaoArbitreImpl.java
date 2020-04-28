@@ -10,7 +10,7 @@ import javax.persistence.Query;
 import projetechec.context.Context;
 import projetechec.entity.Arbitre;
 
-public class DaoArbitreJpaImpl implements DaoArbitre {
+public class DaoArbitreImpl implements DaoArbitre {
 
 	@Override
 	public void insert(Arbitre obj) {

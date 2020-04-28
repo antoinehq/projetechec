@@ -11,7 +11,7 @@ import projetechec.context.Context;
 import projetechec.entity.Membre;
 import projetechec.entity.Membre;
 
-public class DaoMembreXXXImpl implements DaoMembre {
+public class DaoMembreImpl implements DaoMembre {
 
 	@Override
 	public void insert(Membre obj) {

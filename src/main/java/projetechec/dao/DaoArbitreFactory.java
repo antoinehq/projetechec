@@ -5,7 +5,7 @@ public class DaoArbitreFactory {
 
 	public static DaoArbitre getInstance() {
 		if (singleton == null) {
-			singleton = new DaoArbitreJpaImpl();
+			singleton = new DaoArbitreImpl();
 		}
 		return singleton;
 	}

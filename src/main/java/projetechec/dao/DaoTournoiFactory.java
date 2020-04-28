@@ -5,7 +5,7 @@ public class DaoTournoiFactory {
 
 	public static DaoTournoi getInstance() {
 		if (singleton == null) {
-			singleton = new DaoTournoiJpaImpl();
+			singleton = new DaoTournoiImpl();
 		}
 		return singleton;
 	}

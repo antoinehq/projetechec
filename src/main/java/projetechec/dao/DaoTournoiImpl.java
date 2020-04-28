@@ -10,7 +10,7 @@ import javax.persistence.Query;
 import projetechec.context.Context;
 import projetechec.entity.Tournoi;
 
-public class DaoTournoiJpaImpl implements DaoTournoi {
+public class DaoTournoiImpl implements DaoTournoi {
 
 	@Override
 	public void insert(Tournoi obj) {

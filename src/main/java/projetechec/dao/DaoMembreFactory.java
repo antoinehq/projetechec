@@ -5,7 +5,7 @@ public class DaoMembreFactory {
 
 	public static DaoMembre getInstance() {
 		if (singleton == null) {
-			singleton = new DaoMembreXXXImpl();
+			singleton = new DaoMembreImpl();
 		}
 		return singleton;
 	}
