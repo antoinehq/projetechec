@@ -33,7 +33,7 @@ public class Club {
 	private Adresse adresse;
 	@OneToMany(mappedBy = "club")
 	private List<Membre> membres;
-	@OneToMany(mappedBy = "")
+	@OneToMany(mappedBy = "organisateur")
 	private List<Tournoi> tournois;
 
 	public Club() {
