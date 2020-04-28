@@ -1,5 +1,7 @@
 package projetechec.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -7,6 +9,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -26,8 +29,8 @@ public class Arbitre {
 	@Column(name = "niveau", length = 5)
 	@Enumerated(EnumType.STRING)
 	private Niveau niveau;
-	@OneToOne(mappedBy = "arbitre")
-	private Tournoi tournoi;
+	@OneToMany(mappedBy = "arbitre")
+	private List<Tournoi> tournois;
 
 	public Arbitre() {
 	}
@@ -76,12 +79,12 @@ public class Arbitre {
 		this.niveau = niveau;
 	}
 
-	public Tournoi getTournoi() {
-		return tournoi;
+	public List<Tournoi> getTournois() {
+		return tournois;
 	}
 
-	public void setTournoi(Tournoi tournoi) {
-		this.tournoi = tournoi;
+	public void setTournois(List<Tournoi> tournois) {
+		this.tournois = tournois;
 	}
 
 	@Override
