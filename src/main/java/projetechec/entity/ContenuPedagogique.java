@@ -4,16 +4,19 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "contenuPedagogique")
+@Table(name = "contenu_pedagogique")
 @SequenceGenerator(name = "seqContenuPedagogique", sequenceName = "seq_contenu_pedagogique", initialValue = 100, allocationSize = 1)
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING, length = 1)
@@ -26,7 +29,9 @@ public class ContenuPedagogique {
 	private String titre;
 	@Column(name = "prix")
 	private Double prix;
-	// private Membre acheteur;
+	@ManyToOne
+	@JoinColumn(name = "acheteur", foreignKey = @ForeignKey(name = "contenu_pedagogique_acheteur_fk"))
+	private Membre acheteur;
 
 	public ContenuPedagogique() {
 	}
@@ -58,6 +63,14 @@ public class ContenuPedagogique {
 
 	public void setPrix(Double prix) {
 		this.prix = prix;
+	}
+
+	public Membre getAcheteur() {
+		return acheteur;
+	}
+
+	public void setAcheteur(Membre acheteur) {
+		this.acheteur = acheteur;
 	}
 
 	@Override

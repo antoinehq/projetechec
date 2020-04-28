@@ -7,9 +7,11 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -34,12 +36,12 @@ public class Membre {
 	private String email;
 	@Column(name = "elo", length = 5)
 	private Integer elo;
-	@Column(name= "civilite", length = 4)
+	@Column(name = "civilite", length = 4)
 	@Enumerated(EnumType.STRING)
 	private Civilite civilite;
 	@Version
 	private int version;
-	@Column(name= "nationalite", length = 2)
+	@Column(name = "nationalite", length = 2)
 	@Enumerated(EnumType.STRING)
 	private Nationalite nationalite;
 	@Embedded
@@ -47,8 +49,9 @@ public class Membre {
 	@OneToMany
 	private List<Partie> partie;
 	@ManyToOne
+	@JoinColumn(name = "club", foreignKey = @ForeignKey(name = "membre_club_fk"))
 	private Club club;
-	@OneToMany
+	@OneToMany(mappedBy = "acheteur")
 	private List<ContenuPedagogique> contenuPedagogique;
 	@OneToMany
 	private List<HistoriqueElo> historiqueElo;
@@ -56,13 +59,11 @@ public class Membre {
 	private HistoriqueEloKey historiqueEloKey;
 	@OneToMany
 	private List<Tournoi> tournoi;
-	
-	
+
 	public Membre() {
-		
+
 	}
 
-	
 	public Membre(String prenom, String nom, String email, Integer elo) {
 		super();
 		this.prenom = prenom;
@@ -70,7 +71,6 @@ public class Membre {
 		this.email = email;
 		this.elo = elo;
 	}
-
 
 	public Integer getId() {
 		return id;
@@ -144,7 +144,6 @@ public class Membre {
 		this.adresse = adresse;
 	}
 
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -152,7 +151,6 @@ public class Membre {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -171,11 +169,9 @@ public class Membre {
 		return true;
 	}
 
-
 	public Club getClub() {
 		return club;
 	}
-
 
 	public void setClub(Club club) {
 		this.club = club;
@@ -185,11 +181,9 @@ public class Membre {
 		this.partie = partie;
 	}
 
-
 	public void setContenuPedagogique(List<ContenuPedagogique> contenuPedagogique) {
 		this.contenuPedagogique = contenuPedagogique;
 	}
-
 
 	public void setHistoriqueElo(List<HistoriqueElo> historiqueElo) {
 		this.historiqueElo = historiqueElo;
@@ -199,31 +193,25 @@ public class Membre {
 		this.tournoi = tournoi;
 	}
 
-
 	public List<Partie> getPartie() {
 		return partie;
 	}
-
 
 	public List<ContenuPedagogique> getContenuPedagogique() {
 		return contenuPedagogique;
 	}
 
-
 	public List<HistoriqueElo> getHistoriqueElo() {
 		return historiqueElo;
 	}
-
 
 	public List<Tournoi> getTournoi() {
 		return tournoi;
 	}
 
-
 	public HistoriqueEloKey getHistoriqueEloKey() {
 		return historiqueEloKey;
 	}
-
 
 	public void setHistoriqueEloKey(HistoriqueEloKey historiqueEloKey) {
 		this.historiqueEloKey = historiqueEloKey;

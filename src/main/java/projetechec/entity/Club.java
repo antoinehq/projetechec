@@ -1,5 +1,7 @@
 package projetechec.entity;
 
+import java.util.List;
+
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
@@ -8,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -28,7 +31,10 @@ public class Club {
 			@AttributeOverride(name = "ville", column = @Column(name = "ville_club", length = 100)),
 			@AttributeOverride(name = "pays", column = @Column(name = "pays_club", length = 100)) })
 	private Adresse adresse;
-	// private List<Membre> membres;
+	@OneToMany(mappedBy = "club")
+	private List<Membre> membres;
+	@OneToMany(mappedBy = "")
+	private List<Tournoi> tournois;
 
 	public Club() {
 	}
