@@ -22,7 +22,6 @@ import javax.persistence.Version;
 @Entity
 @Table(name = "membre")
 @SequenceGenerator(name = "seqMembre", sequenceName = "seq_membre", initialValue = 100, allocationSize = 1)
-
 public class Membre {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqMembre")
@@ -46,7 +45,7 @@ public class Membre {
 	private Nationalite nationalite;
 	@Embedded
 	private Adresse adresse;
-	@OneToMany
+	@OneToMany(mappedBy = "")
 	private List<Partie> partie;
 	@ManyToOne
 	@JoinColumn(name = "club", foreignKey = @ForeignKey(name = "membre_club_fk"))
@@ -57,8 +56,8 @@ public class Membre {
 	private List<HistoriqueElo> historiqueElo;
 	@OneToOne
 	private HistoriqueEloKey historiqueEloKey;
-	@OneToMany
-	private List<Tournoi> tournoi;
+	@OneToMany(mappedBy = "id.participant")
+	private List<Participation> participations;
 
 	public Membre() {
 
@@ -144,6 +143,54 @@ public class Membre {
 		this.adresse = adresse;
 	}
 
+	public Club getClub() {
+		return club;
+	}
+
+	public void setClub(Club club) {
+		this.club = club;
+	}
+
+	public void setPartie(List<Partie> partie) {
+		this.partie = partie;
+	}
+
+	public void setContenuPedagogique(List<ContenuPedagogique> contenuPedagogique) {
+		this.contenuPedagogique = contenuPedagogique;
+	}
+
+	public void setHistoriqueElo(List<HistoriqueElo> historiqueElo) {
+		this.historiqueElo = historiqueElo;
+	}
+
+	public List<Partie> getPartie() {
+		return partie;
+	}
+
+	public List<ContenuPedagogique> getContenuPedagogique() {
+		return contenuPedagogique;
+	}
+
+	public List<HistoriqueElo> getHistoriqueElo() {
+		return historiqueElo;
+	}
+
+	public HistoriqueEloKey getHistoriqueEloKey() {
+		return historiqueEloKey;
+	}
+
+	public void setHistoriqueEloKey(HistoriqueEloKey historiqueEloKey) {
+		this.historiqueEloKey = historiqueEloKey;
+	}
+
+	public List<Participation> getParticipations() {
+		return participations;
+	}
+
+	public void setParticipations(List<Participation> participations) {
+		this.participations = participations;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -167,54 +214,6 @@ public class Membre {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}
-
-	public Club getClub() {
-		return club;
-	}
-
-	public void setClub(Club club) {
-		this.club = club;
-	}
-
-	public void setPartie(List<Partie> partie) {
-		this.partie = partie;
-	}
-
-	public void setContenuPedagogique(List<ContenuPedagogique> contenuPedagogique) {
-		this.contenuPedagogique = contenuPedagogique;
-	}
-
-	public void setHistoriqueElo(List<HistoriqueElo> historiqueElo) {
-		this.historiqueElo = historiqueElo;
-	}
-
-	public void setTournoi(List<Tournoi> tournoi) {
-		this.tournoi = tournoi;
-	}
-
-	public List<Partie> getPartie() {
-		return partie;
-	}
-
-	public List<ContenuPedagogique> getContenuPedagogique() {
-		return contenuPedagogique;
-	}
-
-	public List<HistoriqueElo> getHistoriqueElo() {
-		return historiqueElo;
-	}
-
-	public List<Tournoi> getTournoi() {
-		return tournoi;
-	}
-
-	public HistoriqueEloKey getHistoriqueEloKey() {
-		return historiqueEloKey;
-	}
-
-	public void setHistoriqueEloKey(HistoriqueEloKey historiqueEloKey) {
-		this.historiqueEloKey = historiqueEloKey;
 	}
 
 }
