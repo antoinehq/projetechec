@@ -13,6 +13,14 @@ public class Participation {
 	public Participation() {
 	}
 
+	public ParticipationKey getId() {
+		return id;
+	}
+
+	public void setId(ParticipationKey id) {
+		this.id = id;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
