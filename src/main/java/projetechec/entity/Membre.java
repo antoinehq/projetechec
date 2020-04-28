@@ -1,4 +1,5 @@
 package projetechec.entity;
+
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -16,6 +17,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
+
 @Entity
 @Table(name = "membre")
 @SequenceGenerator(name = "seqMembre", sequenceName = "seq_membre", initialValue = 100, allocationSize = 1)
@@ -49,17 +51,14 @@ public class Membre {
 	private Club club;
 	@OneToMany(mappedBy = "acheteur")
 	private List<ContenuPedagogique> contenuPedagogique;
-	@OneToMany
-	private List<HistoriqueElo> historiqueElo;
-	@OneToOne
-	private HistoriqueEloKey historiqueEloKey;
 	@OneToMany(mappedBy = "id.membre")
-	private List<HistoriqueEloKey> historiquesEloKey;
-	@OneToMany
-	private List<Tournoi> tournoi;
+	private List<HistoriqueElo> historiqueElo;
+	@OneToMany(mappedBy = "id.participant")
+	private List<Participation> participations;
 
 	public Membre() {
 	}
+
 	public Membre(String prenom, String nom, String email, Integer elo) {
 		super();
 		this.prenom = prenom;
@@ -67,60 +66,119 @@ public class Membre {
 		this.email = email;
 		this.elo = elo;
 	}
+
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public String getPrenom() {
 		return prenom;
 	}
+
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
+
 	public String getNom() {
 		return nom;
 	}
+
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public Integer getElo() {
 		return elo;
 	}
+
 	public void setElo(Integer elo) {
 		this.elo = elo;
 	}
+
 	public Civilite getCivilite() {
 		return civilite;
 	}
+
 	public void setCivilite(Civilite civilite) {
 		this.civilite = civilite;
 	}
+
 	public int getVersion() {
 		return version;
 	}
+
 	public void setVersion(int version) {
 		this.version = version;
 	}
+
 	public Nationalite getNationalite() {
 		return nationalite;
 	}
+
 	public void setNationalite(Nationalite nationalite) {
 		this.nationalite = nationalite;
 	}
+
 	public Adresse getAdresse() {
 		return adresse;
 	}
+
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
+
+	public Club getClub() {
+		return club;
+	}
+
+	public void setClub(Club club) {
+		this.club = club;
+	}
+
+	public void setPartie(List<Partie> partie) {
+		this.partie = partie;
+	}
+
+	public void setContenuPedagogique(List<ContenuPedagogique> contenuPedagogique) {
+		this.contenuPedagogique = contenuPedagogique;
+	}
+
+	public void setHistoriqueElo(List<HistoriqueElo> historiqueElo) {
+		this.historiqueElo = historiqueElo;
+	}
+
+	public List<Partie> getPartie() {
+		return partie;
+	}
+
+	public List<ContenuPedagogique> getContenuPedagogique() {
+		return contenuPedagogique;
+	}
+
+	public List<HistoriqueElo> getHistoriqueElo() {
+		return historiqueElo;
+	}
+
+	public List<Participation> getParticipations() {
+		return participations;
+	}
+
+	public void setParticipations(List<Participation> participations) {
+		this.participations = participations;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -128,6 +186,7 @@ public class Membre {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -144,48 +203,4 @@ public class Membre {
 			return false;
 		return true;
 	}
-	public Club getClub() {
-		return club;
-	}
-	public void setClub(Club club) {
-		this.club = club;
-	}
-	public void setPartie(List<Partie> partie) {
-		this.partie = partie;
-	}
-	public void setContenuPedagogique(List<ContenuPedagogique> contenuPedagogique) {
-		this.contenuPedagogique = contenuPedagogique;
-	}
-	public void setHistoriqueElo(List<HistoriqueElo> historiqueElo) {
-		this.historiqueElo = historiqueElo;
-	}
-	public void setTournoi(List<Tournoi> tournoi) {
-		this.tournoi = tournoi;
-	}
-	public List<Partie> getPartie() {
-		return partie;
-	}
-	public List<ContenuPedagogique> getContenuPedagogique() {
-		return contenuPedagogique;
-	}
-	public List<HistoriqueElo> getHistoriqueElo() {
-		return historiqueElo;
-	}
-	public List<Tournoi> getTournoi() {
-		return tournoi;
-	}
-
-	public HistoriqueEloKey getHistoriqueEloKey() {
-		return historiqueEloKey;
-
-	public List<HistoriqueEloKey> getHistoriquesEloKey() {
-		return historiquesEloKey;
-	}
-
-	public void setHistoriqueEloKey(HistoriqueEloKey historiqueEloKey) {
-		this.historiqueEloKey = historiqueEloKey;
-	public void setHistoriquesEloKey(List<HistoriqueEloKey> historiquesEloKey) {
-		this.historiquesEloKey = historiquesEloKey;
-	}
-
 }

@@ -8,19 +8,21 @@ import javax.persistence.Embeddable;
 import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Embeddable
 public class HistoriqueEloKey implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@ManyToOne
-	@JoinColumn(name="membre")
+	@JoinColumn(name = "membre", foreignKey = @ForeignKey(name = "historique_elo_membre_fk"))
 	private Membre membre;
 	@Column(name = "date")
+	@Temporal(TemporalType.DATE)
 	private Date date;
-	
+
 	public HistoriqueEloKey() {
-		
+
 	}
 
 	public Membre getMembre() {
