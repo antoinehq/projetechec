@@ -50,6 +50,8 @@ public class Tournoi {
 	private Club club;
 	@OneToMany(mappedBy = "partie")
 	private List<Partie> partie;
+	@OneToMany(mappedBy = "participation")
+	private List<Participation> participation;
 
 	public Tournoi() {
 	}
