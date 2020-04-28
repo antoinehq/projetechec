@@ -1,16 +1,24 @@
 package projetechec.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "tournoi")
@@ -21,6 +29,7 @@ public class Tournoi {
 	@Column(name = "id_tournoi")
 	private Integer id;
 	@Column(name = "date_tournoi")
+	@Temporal(TemporalType.DATE)
 	private Date date;
 	@Column(name = "nb_rondes_tournoi")
 	private Integer nbRondes;
@@ -33,8 +42,14 @@ public class Tournoi {
 	@Column(name = "cadence", length = 50)
 	@Enumerated(EnumType.STRING)
 	private Cadence cadence;
-	@Column(name = "arbitre_tournoi")
+	@OneToOne
+	@JoinColumn(name = "arbitre_tournoi")
 	private Arbitre arbitre;
+	@ManyToOne
+	@JoinColumn(name = "organisateur", foreignKey = @ForeignKey(name = "tournoi_club_fk"))
+	private Club club;
+	@OneToMany(mappedBy = "partie")
+	private List<Partie> partie;
 
 	public Tournoi() {
 	}
@@ -120,6 +135,22 @@ public class Tournoi {
 
 	public void setArbitre(Arbitre arbitre) {
 		this.arbitre = arbitre;
+	}
+
+	public Club getClub() {
+		return club;
+	}
+
+	public void setClub(Club club) {
+		this.club = club;
+	}
+
+	public List<Partie> getPartie() {
+		return partie;
+	}
+
+	public void setPartie(List<Partie> partie) {
+		this.partie = partie;
 	}
 
 	@Override

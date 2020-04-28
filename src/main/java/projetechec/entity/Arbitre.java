@@ -7,6 +7,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -25,6 +26,9 @@ public class Arbitre {
 	@Column(name = "niveau", length = 5)
 	@Enumerated(EnumType.STRING)
 	private Niveau niveau;
+	@OneToOne
+	@Column(name = "tournoi_arbitre")
+	private Tournoi tournoi;
 
 	public Arbitre() {
 	}
@@ -71,6 +75,14 @@ public class Arbitre {
 
 	public void setNiveau(Niveau niveau) {
 		this.niveau = niveau;
+	}
+
+	public Tournoi getTournoi() {
+		return tournoi;
+	}
+
+	public void setTournoi(Tournoi tournoi) {
+		this.tournoi = tournoi;
 	}
 
 	@Override
