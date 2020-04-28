@@ -121,12 +121,7 @@ public class Partie {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((datePartie == null) ? 0 : datePartie.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((membre_blanc == null) ? 0 : membre_blanc.hashCode());
-		result = prime * result + ((membre_noir == null) ? 0 : membre_noir.hashCode());
-		result = prime * result + ((result_blanc == null) ? 0 : result_blanc.hashCode());
-		result = prime * result + ((result_noir == null) ? 0 : result_noir.hashCode());
 		return result;
 	}
 
@@ -140,37 +135,14 @@ public class Partie {
 		if (getClass() != obj.getClass())
 			return false;
 		Partie other = (Partie) obj;
-		if (datePartie == null) {
-			if (other.datePartie != null)
-				return false;
-		} else if (!datePartie.equals(other.datePartie))
-			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (membre_blanc == null) {
-			if (other.membre_blanc != null)
-				return false;
-		} else if (!membre_blanc.equals(other.membre_blanc))
-			return false;
-		if (membre_noir == null) {
-			if (other.membre_noir != null)
-				return false;
-		} else if (!membre_noir.equals(other.membre_noir))
-			return false;
-		if (result_blanc == null) {
-			if (other.result_blanc != null)
-				return false;
-		} else if (!result_blanc.equals(other.result_blanc))
-			return false;
-		if (result_noir == null) {
-			if (other.result_noir != null)
-				return false;
-		} else if (!result_noir.equals(other.result_noir))
-			return false;
 		return true;
 	}
+	
+	
 	
 }
