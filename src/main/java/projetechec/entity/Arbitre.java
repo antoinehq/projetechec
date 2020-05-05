@@ -10,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -26,6 +25,8 @@ public class Arbitre {
 	private String prenom;
 	@Column(name = "nom_arbitre", length = 100)
 	private String nom;
+	@Column(name = "email_arbitre", length = 40)
+	private String email;
 	@Column(name = "niveau", length = 5)
 	@Enumerated(EnumType.STRING)
 	private Niveau niveau;
@@ -69,6 +70,14 @@ public class Arbitre {
 
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public Niveau getNiveau() {

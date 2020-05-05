@@ -7,6 +7,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.ForeignKey;
 //import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
@@ -38,6 +40,9 @@ public class Partie {
 	@ManyToOne
 	@JoinColumn(name = "joueur_noirs", foreignKey = @ForeignKey(name = "partie_joueur_noirs_fk"))
 	private Membre joueurNoirs;
+	@Column(name = "cadence_partie", length = 50)
+	@Enumerated(EnumType.STRING)
+	private Cadence cadence;
 	@Column(name = "result_blancs_partie", length = 5, nullable = false)
 	private Double resultBlancs;
 	@Column(name = "result_noirs_partie", length = 5, nullable = false)
@@ -77,6 +82,14 @@ public class Partie {
 
 	public void setJoueurNoirs(Membre joueurNoirs) {
 		this.joueurNoirs = joueurNoirs;
+	}
+
+	public Cadence getCadence() {
+		return cadence;
+	}
+
+	public void setCadence(Cadence cadence) {
+		this.cadence = cadence;
 	}
 
 	public Double getResultBlancs() {

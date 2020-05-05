@@ -14,7 +14,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -39,7 +38,7 @@ public class Tournoi {
 	private Integer fraisInscription;
 	@Column(name = "prix_tournoi")
 	private Integer prix;
-	@Column(name = "cadence", length = 50)
+	@Column(name = "cadence_tournoi", length = 50)
 	@Enumerated(EnumType.STRING)
 	private Cadence cadence;
 	@ManyToOne

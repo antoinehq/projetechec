@@ -7,23 +7,24 @@ import javax.persistence.Entity;
 @Entity
 @DiscriminatorValue("V")
 public class Video extends ContenuPedagogique {
-	@Column(name = "site_internet", length = 150)
-	private String siteInternet;
+	@Column(name = "url", length = 150)
+	private String url;
 
 	public Video() {
 		super();
 	}
 
-	public Video(String titre, Double prix, String siteInternet) {
+	public Video(String titre, Double prix, String url) {
 		super(titre, prix);
+		this.url = url;
 	}
 
-	public String getSiteInternet() {
-		return siteInternet;
+	public String getUrl() {
+		return url;
 	}
 
-	public void setSiteInternet(String siteInternet) {
-		this.siteInternet = siteInternet;
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 }
