@@ -1,0 +1,115 @@
+Crud de base Repository 
+insert
+update
+deleteObject
+deleteByKey
+delete tous les elements
+delete liste d'element 
+findByKey
+find all
+
+Loïc (entity)
+Mail arbitre
+Url pour video
+Cadence partie
+
+1 Antoine
+*Membre (10000)
+FindByNomAndPrenom
+FindAllByClub
+FindAllByElo
+FindEloMaxById
+FindAllByTournoi
+Count partie (blanc+noirs)
+Count victoire (blanc et noirs)
+Count nul (blanc et noirs)
+Count defaite (blanc et noirs)
+%victoire
+%defaite
+calcul elo
+Count tournoi
+Pagination : 50 joueurs
+(les tris)
+
+2 Loïc
+*ContenuPeda (12)
+FindByTitre
+FindAllByAuteur
+FindAllLivre
+FindAllVideo
+FindAllLivreByAuteur
+FindLivreByTitre
+FindAllVideoByAuteur
+FindVideoByTitre
+Count ContenuPeda
+Count Livres
+Count Videos
+
+Pagination : 10 articles par pages 
+(les tris)
+
+(Sort by prix)
+(note du contenu ?)
+(FindByMotCle ?)
+
+2 Loïc
+*HistoriqueElo (3)
+FindAllByDate
+FindAllByMembre
+Pagination : 25 par pages
+(les tris)
+
+
+3 Christopher
+*Arbitre (4)
+FindByNomAndPrenom
+FindAllByNiveau
+FindByTournoi
+Count tournois
+(les tris)
+
+3 Christopher
+*Partie (*)
+FindAllByMembre
+FindAllByTournoi
+FindAllByCadence
+FindAllByMembreBlancs
+FindAllByMembreNoirs
+Pagination : 25
+(les tris)
+Trouver les parties entre 2 joueurs
+	>(Double FindByMembre)
+	Count win, draw, lose
+(matchmaking)
+
+
+4 Sven
+*Club (7)
+FindAllByPays
+FindByVille
+FindByNom
+FindAllMembres
+FindAllTournois
+Count tournoi
+Count membres
+(Classement par moyenne élo (top10))
+(les tris)
+
+4 Sven
+*Tournoi (7)
+FindByDate
+FindAllByClub
+FindAllByArbitre
+FindByCadence
+FindAllByNbRondes
+FindAllByMembre
+(Sort by cout d'inscription)
+Pagination : 10
+(les tris)
+
+*Participation
+/
+
+
+
+
