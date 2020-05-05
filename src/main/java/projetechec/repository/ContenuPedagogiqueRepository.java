@@ -16,18 +16,18 @@ public interface ContenuPedagogiqueRepository extends JpaRepository<ContenuPedag
 
 	List<ContenuPedagogique> findByAuteur(String auteur, Pageable pageable);
 
-	@Query("select c from contenu_pedagogique c where type = 'L' ")
+	@Query("select l from Livre")
 	List<Livre> findAllLivre(Pageable pageable);
 
-	@Query("select c from contenu_pedagogique c where type = 'V' ")
+	@Query("select v from Video")
 	List<Video> findAllVideo(Pageable pageable);
 
 	Integer countById();
 
-	@Query("select count(c) from contenu_pedagogique c where type = 'L' ")
+	@Query("select count(l) from Livre")
 	Integer countByLivre();
 
-	@Query("select count(c) from contenu_pedagogique c where type = 'V' ")
+	@Query("select count(v) from Video")
 	Integer countByVideo();
 
 }
