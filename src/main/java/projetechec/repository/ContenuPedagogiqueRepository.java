@@ -24,10 +24,10 @@ public interface ContenuPedagogiqueRepository extends JpaRepository<ContenuPedag
 
 	Integer countById();
 
-	@Query("select c from contenu_pedagogique c where type = 'L' ")
+	@Query("select count(c) from contenu_pedagogique c where type = 'L' ")
 	Integer countByLivre();
 
-	@Query("select c from contenu_pedagogique c where type = 'V' ")
+	@Query("select count(c) from contenu_pedagogique c where type = 'V' ")
 	Integer countByVideo();
 
 }
