@@ -49,7 +49,7 @@ public class AppConfig {
 		emf.setDataSource(dataSource);
 		emf.setPackagesToScan("projetechec.entity");
 		emf.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-		emf.setJpaProperties(null);
+		emf.setJpaProperties(jpaProperties());
 		return emf;
 	}
 
