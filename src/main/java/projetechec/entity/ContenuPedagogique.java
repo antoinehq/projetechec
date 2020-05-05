@@ -27,6 +27,8 @@ public class ContenuPedagogique {
 	private Integer id;
 	@Column(name = "titre", length = 150, nullable = false)
 	private String titre;
+	@Column(name = "auteur", length = 150, nullable = false)
+	private String auteur;
 	@Column(name = "prix")
 	private Double prix;
 	@ManyToOne
@@ -55,6 +57,14 @@ public class ContenuPedagogique {
 
 	public void setTitre(String titre) {
 		this.titre = titre;
+	}
+
+	public String getAuteur() {
+		return auteur;
+	}
+
+	public void setAuteur(String auteur) {
+		this.auteur = auteur;
 	}
 
 	public Double getPrix() {
