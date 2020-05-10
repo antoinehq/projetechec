@@ -16,7 +16,7 @@ public interface HistoriqueEloRepository extends JpaRepository<HistoriqueElo, Hi
 	@Query("select h from HistoriqueElo h where h.id.date = :date")
 	List<HistoriqueElo> findByDate(@Param("date") Date date, Pageable pageable);
 
-	@Query("select h from HistoriqueElo h where h.id.membre= :id")
-	List<HistoriqueElo> findByMembre(@Param("id") Integer id, Pageable pageable);
+	@Query("select h from HistoriqueElo h where h.id.membre.id = :id")
+	List<HistoriqueElo> findByMembre(@Param("id") Integer id, Pageable peageable);
 
 }
