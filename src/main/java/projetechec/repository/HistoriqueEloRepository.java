@@ -13,10 +13,10 @@ import projetechec.entity.HistoriqueEloKey;
 
 public interface HistoriqueEloRepository extends JpaRepository<HistoriqueElo, HistoriqueEloKey> {
 
-	@Query("select h from historique_elo h left join fetch h.id.date where h.id.date = :date")
+	@Query("select h from HistoriqueElo h where h.id.date = :date")
 	List<HistoriqueElo> findByDate(@Param("date") Date date, Pageable pageable);
 
-	@Query("select h from historique_elo h left join fetch h.id.membre as m where m.id = :id")
+	@Query("select h from HistoriqueElo h where h.id.membre= :id")
 	List<HistoriqueElo> findByMembre(@Param("id") Integer id, Pageable pageable);
 
 }

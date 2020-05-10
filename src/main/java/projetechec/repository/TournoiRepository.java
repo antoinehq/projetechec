@@ -10,23 +10,24 @@ import org.springframework.data.repository.query.Param;
 import projetechec.entity.Arbitre;
 import projetechec.entity.Cadence;
 import projetechec.entity.Club;
+import projetechec.entity.Membre;
 import projetechec.entity.Participation;
 import projetechec.entity.Tournoi;
 
 public interface TournoiRepository extends JpaRepository<Tournoi, Integer> {
-	@Query("select t from Tournoi t left join fetch t.date_tournoi where t.date_tournoi=:date")
+	@Query("select t from Tournoi t where t.date=:date")
 	List<Tournoi> findByDate(@Param("date") Date date);
 
-	@Query("select t from Tournoi t left join fetch t.cadence_tournoi where t.cadence_tournoi=:cadence")
+	@Query("select t from Tournoi t where t.cadence=:cadence")
 	List<Tournoi> findByCadence(@Param("cadence") Cadence cadence);
 
-	@Query("select t from Tournoi t left join fetch t.organisateur where t.organisateur=:club")
+	@Query("select t from Tournoi t where t.organisateur=:club")
 	List<Tournoi> findByClub(@Param("club") Club club);
 
-	@Query("select t from Tournoi t left join fetch t.arbitre_tournoi where t.arbitre_tournoi=:arbitre")
+	@Query("select t from Tournoi t where t.arbitre =:arbitre")
 	List<Tournoi> findByArbitre(@Param("arbitre") Arbitre arbitre);
 
-	@Query("select t from Tournoi c left join fetch membre where t.participations=:participations")
-	List<Tournoi> findByMembre(@Param("participations") Participation participations);
+	@Query("select p from Participation p where p.id.participant=:participant")
+	List<Tournoi> findByMembre(@Param("participant") Membre participant);
 
 }
