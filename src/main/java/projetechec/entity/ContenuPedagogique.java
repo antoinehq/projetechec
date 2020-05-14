@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Version;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "contenu_pedagogique")
@@ -26,6 +28,7 @@ public class ContenuPedagogique {
 	@Column(name = "id_contenu_pedagogique")
 	private Integer id;
 	@Column(name = "titre", length = 150, nullable = false)
+	@NotEmpty
 	private String titre;
 	@Column(name = "auteur", length = 150, nullable = false)
 	private String auteur;
@@ -34,6 +37,8 @@ public class ContenuPedagogique {
 	@ManyToOne
 	@JoinColumn(name = "acheteur", foreignKey = @ForeignKey(name = "contenu_pedagogique_acheteur_fk"))
 	private Membre acheteur;
+	@Version
+	private int version;
 
 	public ContenuPedagogique() {
 	}
@@ -81,6 +86,14 @@ public class ContenuPedagogique {
 
 	public void setAcheteur(Membre acheteur) {
 		this.acheteur = acheteur;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
 	}
 
 	@Override
