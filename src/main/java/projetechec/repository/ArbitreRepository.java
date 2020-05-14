@@ -24,4 +24,5 @@ public interface ArbitreRepository extends JpaRepository<Arbitre, Integer>{
 
 	@Query("select count(t.id) from Tournoi t where :arbitre = t.arbitre")
 	Integer countAllTournoiByArbitre(@Param("arbitre")Arbitre arbitre);
+	
 }

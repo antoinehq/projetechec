@@ -30,4 +30,5 @@ public interface ContenuPedagogiqueRepository extends JpaRepository<ContenuPedag
 	@Query("select count(v.id) from Video v")
 	Integer countByVideo();
 
+	
 }

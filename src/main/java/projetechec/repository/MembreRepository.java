@@ -42,4 +42,5 @@ public interface MembreRepository extends JpaRepository<Membre, Integer> {
 	
 	@Query("select count(p.id.tournoi) from Participation p where :id = p.id.participant.id")
 	Integer countTournoi(@Param("id")Integer id);
+	
 }

@@ -6,4 +6,5 @@ import projetechec.entity.Partie;
 
 public interface PartieRepository extends JpaRepository<Partie, Integer> {
 
+	
 }

@@ -19,4 +19,5 @@ public interface HistoriqueEloRepository extends JpaRepository<HistoriqueElo, Hi
 	@Query("select h from HistoriqueElo h where h.id.membre.id = :id")
 	List<HistoriqueElo> findByMembre(@Param("id") Integer id, Pageable peageable);
 
+	
 }

@@ -26,5 +26,6 @@ public interface ClubRepository extends JpaRepository<Club, Integer> {
 
 	@Query("select count(tournois) from Club")
 	List<Integer> countAllTournoiByClub();
+	
 
 }

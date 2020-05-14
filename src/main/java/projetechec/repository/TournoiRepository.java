@@ -30,5 +30,6 @@ public interface TournoiRepository extends JpaRepository<Tournoi, Integer> {
 	List<Tournoi> findByMembre(@Param("participant") Membre participant);
 	
 	
+	
 
 }
