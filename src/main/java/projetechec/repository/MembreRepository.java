@@ -8,7 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import projetechec.entity.Club;
-import projetechec.entity.HistoriqueElo;
 import projetechec.entity.Membre;
 import projetechec.entity.Tournoi;
 
