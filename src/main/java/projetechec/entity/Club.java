@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
 @Entity
 @Table(name = "club")
@@ -35,6 +36,8 @@ public class Club {
 	private List<Membre> membres;
 	@OneToMany(mappedBy = "organisateur")
 	private List<Tournoi> tournois;
+	@Version
+	private int version;
 
 	public Club() {
 	}
@@ -81,6 +84,14 @@ public class Club {
 
 	public void setTournois(List<Tournoi> tournois) {
 		this.tournois = tournois;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
 	}
 
 	@Override
