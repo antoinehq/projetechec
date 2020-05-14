@@ -11,7 +11,6 @@ import projetechec.entity.Arbitre;
 import projetechec.entity.Cadence;
 import projetechec.entity.Club;
 import projetechec.entity.Membre;
-import projetechec.entity.Participation;
 import projetechec.entity.Tournoi;
 
 public interface TournoiRepository extends JpaRepository<Tournoi, Integer> {
@@ -27,7 +26,7 @@ public interface TournoiRepository extends JpaRepository<Tournoi, Integer> {
 	@Query("select t from Tournoi t where t.arbitre =:arbitre")
 	List<Tournoi> findByArbitre(@Param("arbitre") Arbitre arbitre);
 
-	@Query("select p from Participation p where p.id.participant=:participant")
+	@Query("select t from Tournoi t where t.participation.id.participant=:participant")
 	List<Tournoi> findByMembre(@Param("participant") Membre participant);
 
 }

@@ -50,7 +50,7 @@ public class MembreService {
 	}
 	
 	public Integer findEloMaxById(Integer id) {
-		List<Membre> membres = membreRepository.findEloMaxById(id);
+		return membreRepository.findEloMaxById(id);
 	}
 	
 }
