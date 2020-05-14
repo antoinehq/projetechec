@@ -29,4 +29,5 @@ public interface TournoiRepository extends JpaRepository<Tournoi, Integer> {
 	@Query("select t from Tournoi t join t.participations p where p.id.participant=:participant")
 	List<Tournoi> findByMembre(@Param("participant") Membre participant);
 
+	
 }
